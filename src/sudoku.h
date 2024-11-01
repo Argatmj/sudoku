@@ -12,4 +12,8 @@ public:
     bool inputBoard();
     
     void printBoard();
+
+    bool isValid(int row, int col, int number);
+
+    bool solveWithBT(int row, int col);
 };

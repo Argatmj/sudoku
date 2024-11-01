@@ -24,7 +24,7 @@ bool sudoku::inputBoard(){
 void sudoku::printBoard() {
     for (int row = 0; row < 9; row++) {
         if (row % 3 == 0 && row != 0) {
-            std::cout << "-------+-------+-----" << std::endl;
+            std::cout << "-------+-------+------" << std::endl;
         }
         for (int col = 0; col < 9; col++) {
             if (col % 3 == 0 && col != 0) {
@@ -58,26 +58,31 @@ bool sudoku::isValid(int row, int col, int number){
     return true;
 }
 
-bool sudoku::solveWithBT(int row, int col){
+bool sudoku::solveWithBT(int row, int col, bool flag){
     if (row == 9) {
         return true; 
     }
    
     if (col == 9) {
-        return solveWithBT(row + 1, 0); 
+        return solveWithBT(row + 1, 0, flag); 
     }
     
     if (sudokuBoard[row][col] != 0) {
-        return solveWithBT(row, col + 1); 
+        return solveWithBT(row, col + 1, flag); 
     }
 
     for (int num = 1; num <= 9; num++) {
         if (this->isValid(row, col, num)) {
             sudokuBoard[row][col] = num; 
-            if (solveWithBT(row, col + 1)) {
+            if (solveWithBT(row, col + 1, flag)) {
                 return true; 
             }
             sudokuBoard[row][col] = 0; 
+        }
+        if(flag){
+            printBoard();
+            std::cout << std::endl;
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }
     }
     return false; 

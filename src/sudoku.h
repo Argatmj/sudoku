@@ -1,6 +1,8 @@
-#include <vector>
 #include <iostream>
 #include <fstream>
+#include <vector> 
+#include <thread>    
+#include <chrono>
 #include <string>
 
 class sudoku {
@@ -15,5 +17,5 @@ public:
 
     bool isValid(int row, int col, int number);
 
-    bool solveWithBT(int row, int col);
+    bool solveWithBT(int row, int col, bool flag);
 };

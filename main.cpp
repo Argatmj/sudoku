@@ -6,5 +6,5 @@ int main(){
     s.inputBoard();
     s.printBoard();
     std::cout << std::endl;  
-    if(s.solveWithBT(0,0))s.printBoard();
+    if(s.solveWithBT(0,0,true))s.printBoard();
 }

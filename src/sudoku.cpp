@@ -36,26 +36,34 @@ void sudoku::printBoard() {
     }
 }
 
-bool sudoku::isValid(int row, int col, int number){
-
+bool sudoku::isValidCol(int row, int number){
     for(int c = 0; c < 9; c++){
         if(sudokuBoard[row][c] == number) return false;
     }
+    return true;
+}
 
+bool sudoku::isValidRow(int col, int number){
     for(int r = 0; r < 9; r++){
         if(sudokuBoard[r][col] == number) return false;
     }
+    return true;
+}
 
-    int startRow = row - (row % 3);
-    int startCol = col - (col % 3);
-    
+bool sudoku::isValidSubGrid(int startRow, int startCol, int number){
     for (int r = startRow; r < startRow + 3; r++) {
         for (int c = startCol; c < startCol + 3; c++) {
             if (sudokuBoard[r][c] == number) return false;
         }
     }
-
     return true;
+}
+
+bool sudoku::isValid(int row, int col, int number){
+    int startRow = row - (row % 3);
+    int startCol = col - (col % 3);
+    
+    return isValidRow(col,number) && isValidCol(row,number) && isValidSubGrid(startRow,startCol,number);
 }
 
 bool sudoku::solveWithBT(int row, int col, bool flag){

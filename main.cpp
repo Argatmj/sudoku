@@ -7,4 +7,5 @@ int main(){
     s.printBoard();
     std::cout << std::endl;  
     if(s.solveWithBT(0,0,false))s.printBoard();
+    s.clearBoard();
 }

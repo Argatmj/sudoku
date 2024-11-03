@@ -95,3 +95,11 @@ bool sudoku::solveWithBT(int row, int col, bool flag){
     }
     return false; 
 }
+
+void sudoku::clearBoard(){
+    for(int row = 0; row < 9; row++){
+        for(int col = 0; col < 9; col++){
+            sudokuBoard[row][col] = 0;
+        }
+    }
+}

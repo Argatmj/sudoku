@@ -1,11 +1,19 @@
-#include "src/sudoku.h"
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 
-int main(){
+int main(int argc, char *argv[])
+{
+    QGuiApplication app(argc, argv);
 
-    sudoku s;
-    s.inputBoard();
-    s.printBoard();
-    std::cout << std::endl;  
-    if(s.solveWithBT(0,0,false))s.printBoard();
-    s.clearBoard();
+    QQmlApplicationEngine engine;
+    const QUrl url(QStringLiteral("qrc:/Sudoku/Main.qml"));
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreationFailed,
+        &app,
+        []() { QCoreApplication::exit(-1); },
+        Qt::QueuedConnection);
+    engine.load(url);
+
+    return app.exec();
 }

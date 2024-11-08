@@ -14,7 +14,7 @@ The program uses a **backtracking algorithm** to solve Sudoku puzzles. The graph
 - **Step-by-Step Mode**: Watch the solver in action, cell by cell.
 
 ### Demo
-Watch the **Sudoku Solver** in action here: 
+Check out the demo here: 
 
 [![Sudoku Solver Demo](https://img.youtube.com/vi/J4KVWfPu_UY/0.jpg)](https://youtu.be/J4KVWfPu_UY)
 
